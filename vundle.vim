@@ -21,6 +21,9 @@ call vundle#rc()
 " Let Vundle manage itself, required
 Plugin 'gmarik/Vundle.vim'
 
+" Color schemes
+Plugin 'tomasr/molokai'
+
 filetype plugin indent on     " required!
 
 " Auto-installing Plugins

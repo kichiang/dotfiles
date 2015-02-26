@@ -48,3 +48,6 @@ set softtabstop=4
 set shiftwidth=4			" 4 spaces to use for each step of (auto)indent.
 " set textwidth=79				" 79 width of text that is being inserted.
 " set smarttab					" Insert tabs on the start of a line according to shiftwidth, not tabstop.
+
+" Color schemes
+color molokai
