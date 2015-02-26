@@ -21,6 +21,11 @@ call vundle#rc()
 " Let Vundle manage itself, required
 Plugin 'gmarik/Vundle.vim'
 
+" IDE features
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bronson/vim-trailing-whitespace'
+
 " Color schemes
 Plugin 'tomasr/molokai'
 

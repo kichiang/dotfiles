@@ -51,3 +51,27 @@ set shiftwidth=4			" 4 spaces to use for each step of (auto)indent.
 
 " Color schemes
 color molokai
+
+
+" Plugin 'majutsushi/tagbar'
+let g:tagbar_left=1
+let g:tagbar_width=30
+let g:tagbar_sort=0
+let g:tagbar_autofocus=1
+let g:tagbar_compact=1
+nmap <F5> :TagbarToggle<CR>
+
+" Plugin 'scrooloose/nerdtree'
+let NERDTreeWinSize=30
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '\.o$']
+let NERDTreeShowBookmarks=1
+let NERDTreeWinPos="right"
+nmap <F6> :NERDTreeToggle<CR>
+
+
+" Easier navigation between split windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
