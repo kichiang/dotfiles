@@ -3,7 +3,8 @@
 
 # Setup nice colors
 alias sudo='sudo '
-alias ls='ls --color=auto'
+[[ $OSTYPE == *linux* ]] && alias ls='ls --color=auto'
+[[ $OSTYPE == *darwin* ]] && alias ls='ls -G'
 alias grep='grep --color=auto'
 
 # Generate the databases of cscope and ctags
