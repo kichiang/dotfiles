@@ -19,3 +19,18 @@ gentag() {
 }
 
 PS1='[\u@\h \W]\$ '
+
+
+#
+# The configuration of application installed by Homebrew
+#
+
+if [ -x /usr/local/bin/brew ]; then
+    # required!
+    export PATH=/usr/local/bin:$PATH
+
+    # enable bash completion for git
+    BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
+    [[ -a $BASH_COMPLETION_DIR/git-completion.bash ]] && source $BASH_COMPLETION_DIR/git-completion.bash
+fi
+
