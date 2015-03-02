@@ -13,6 +13,7 @@ if !filereadable(vundle_readme)
 endif
 
 set nocompatible	" be iMproved
+filetype on         " required for compatibility with Mac OS X
 filetype off		" required!
 
 set rtp+=~/.vim/bundle/Vundle.vim
