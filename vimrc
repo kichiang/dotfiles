@@ -70,6 +70,27 @@ let NERDTreeWinPos="right"
 nmap <F6> :NERDTreeToggle<CR>
 
 
+" Settings for cscope interface
+if has("cscope")
+    set cst
+    set csto=1
+
+    set nocsverb
+    if filereadable("cscope.out")
+        cs add cscope.out
+    endif
+    set csverb
+
+    nmap <c-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <c-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <c-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <c-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <c-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <c-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <c-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <c-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+
 " Easier navigation between split windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
