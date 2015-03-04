@@ -10,12 +10,21 @@ alias grep='grep --color=auto'
 # Generate the databases of cscope and ctags
 gentag() {
     rm -f /tmp/cscope.files
-    echo "Creating list of files in system..."
-    find $PWD -name '*.[cChH]' -print > /tmp/cscope.files
-    find $PWD -name '*.cpp' -print >> /tmp/cscope.files
-    echo "Generating cross-reference database..."
-    cscope -bqki /tmp/cscope.files
-    ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q $PWD
+    echo -ne "[ .... ] Create list of files in system\r"
+    find $PWD -name '*.[ch]' | awk '{print "\""$0"\""}' > /tmp/cscope.files
+    find $PWD -name '*.cpp' | awk '{print "\""$0"\""}' >> /tmp/cscope.files
+    echo "[ Done ] Create list of files in system"
+    rm -f $PWD/cscope.out $PWD/cscope.*.out $PWD/tags $PWD/gentag.log
+    echo -ne "[ .... ] Generate cross-reference database\r"
+    cscope -bqki /tmp/cscope.files > $PWD/gentag.log 2>&1
+    ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q $PWD >> $PWD/gentag.log 2>&1
+    if [ ! -s $PWD/gentag.log ]; then
+        rm $PWD/gentag.log
+        echo "[ Done ] Generate cross-reference database"
+    else
+        rm -f $PWD/cscope.out $PWD/cscope.*.out $PWD/tags
+        echo "[ Fail ] Generate cross-reference database"
+    fi
 }
 
 PS1='[\u@\h \W]\$ '
