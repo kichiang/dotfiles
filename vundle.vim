@@ -26,6 +26,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'vim-scripts/Mark'
 
 " Color schemes
 Plugin 'tomasr/molokai'
