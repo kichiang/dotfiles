@@ -9,10 +9,14 @@ alias grep='grep --color=auto'
 
 # Generate the databases of cscope and ctags
 gentag() {
+    GT_OPT=""
+    if [ $# == 1 ] && [ "$1" == "-L" ]; then
+        GT_OPT="-L"
+    fi
     rm -f /tmp/cscope.files
     echo -ne "[ .... ] Create list of files in system\r"
-    find $PWD -name '*.[ch]' | awk '{print "\""$0"\""}' > /tmp/cscope.files
-    find $PWD -name '*.cpp' | awk '{print "\""$0"\""}' >> /tmp/cscope.files
+    find $GT_OPT $PWD -name '*.[ch]' | awk '{print "\""$0"\""}' > /tmp/cscope.files
+    find $GT_OPT $PWD -name '*.cpp' | awk '{print "\""$0"\""}' >> /tmp/cscope.files
     echo "[ Done ] Create list of files in system"
     rm -f $PWD/cscope.out $PWD/cscope.*.out $PWD/tags $PWD/gentag.log
     echo -ne "[ .... ] Generate cross-reference database\r"
