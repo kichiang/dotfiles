@@ -91,6 +91,18 @@ if has("cscope")
 	nmap <c-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
+" Settings for MacVim
+if has("mac")
+	set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P			" Standard status line with 'ruler' set
+
+	if has("gui_running")
+		set guioptions=aAce
+		set guifont=Menlo\ Regular:h14
+		set columns=167
+		set lines=47
+	endif
+endif
+
 " Easier navigation between split windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
