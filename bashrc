@@ -6,6 +6,7 @@ alias sudo='sudo '
 [[ $OSTYPE == *linux* ]] && alias ls='ls --color=auto'
 [[ $OSTYPE == *darwin* ]] && alias ls='ls -G'
 alias grep='grep --color=auto'
+alias diff='colordiff'
 
 # Generate the databases of cscope and ctags
 gentag() {
