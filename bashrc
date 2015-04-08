@@ -17,7 +17,7 @@ gentag() {
     rm -f /tmp/cscope.files
     echo -ne "[ .... ] Create list of files in system\r"
     find $GT_OPT $PWD -name '*.[ch]' | awk '{print "\""$0"\""}' > /tmp/cscope.files
-    find $GT_OPT $PWD -name '*.cpp' | awk '{print "\""$0"\""}' >> /tmp/cscope.files
+    find $GT_OPT $PWD -name '*.cpp' -o -name '*.cxx' | awk '{print "\""$0"\""}' >> /tmp/cscope.files
     echo "[ Done ] Create list of files in system"
     rm -f $PWD/cscope.out $PWD/cscope.*.out $PWD/tags $PWD/gentag.log
     echo -ne "[ .... ] Generate cross-reference database\r"
