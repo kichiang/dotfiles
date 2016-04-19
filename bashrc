@@ -35,16 +35,32 @@ gentag() {
 PS1='[\u@\h \W]\$ '
 
 
-#
-# The configuration of application installed by Homebrew
-#
+case "$OSTYPE" in
+    linux*)
+        ;;
 
-if [ -x /usr/local/bin/brew ]; then
-    # required!
-    export PATH=/usr/local/bin:$PATH
+    darwin*)
+        # The configuration of application installed by Homebrew
+        if [ -x /usr/local/bin/brew ]; then
+            # required!
+            export PATH=/usr/local/bin:$PATH
 
-    # enable bash completion for git
-    BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
-    [[ -a $BASH_COMPLETION_DIR/git-completion.bash ]] && source $BASH_COMPLETION_DIR/git-completion.bash
-fi
+            # enable bash completion for git
+            BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
+            [[ -a $BASH_COMPLETION_DIR/git-completion.bash ]] && source $BASH_COMPLETION_DIR/git-completion.bash
+        fi
+
+        # Android environment variables
+        export ANDROID_HOME=~/Library/Android
+        export PATH=$PATH:$ANDROID_HOME/sdk/tools:$ANDROID_HOME/sdk/platform-tools:$ANDROID_HOME/ndk/current
+
+        # Gradle environment variables
+        export GRADLE_HOME=~/.gradle
+        export PATH=$PATH:$GRADLE_HOME/current/bin
+        ;;
+
+    *)
+        echo "Unsupported OS type: $OSTYPE"
+        ;;
+esac
 
