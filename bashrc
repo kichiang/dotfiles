@@ -37,6 +37,7 @@ PS1='[\u@\h \W]\$ '
 
 case "$OSTYPE" in
     linux*)
+        alias tmux='tmux -2'
         ;;
 
     darwin*)
@@ -64,3 +65,5 @@ case "$OSTYPE" in
         ;;
 esac
 
+# Remove duplicate entries
+export PATH=$(perl -e 'print join ":", grep {!$h{$_}++} split ":", $ENV{PATH}')
