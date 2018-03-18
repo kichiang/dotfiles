@@ -38,6 +38,10 @@ PS1='[\u@\h \W]\$ '
 case "$OSTYPE" in
     linux*)
         alias tmux='tmux -2'
+
+        # enable bash completion for git
+        BASH_COMPLETION_DIR=/usr/share/bash-completion/completions
+        [[ -a $BASH_COMPLETION_DIR/git-completion.bash ]] && source $BASH_COMPLETION_DIR/git-completion.bash
         ;;
 
     darwin*)
